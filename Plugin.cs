@@ -4,7 +4,7 @@ using NoScavSelect.Patches;
 
 namespace NoScavSelect
 {
-    [BepInPlugin("com.mcreaper.noscavselect", "No Scav Select", "2.0.0")]
+    [BepInPlugin("com.mcreaper.noscavselect", "No Scav Select", "2.0.1")]
     [BepInDependency("com.SPT.core", "4.0.0")]
     public class Plugin : BaseUnityPlugin
     {

@@ -14,11 +14,13 @@ Drop `NoScavSelect.dll` into `<SPT>/BepInEx/plugins/`.
 
 - The original postfixed `MatchMakerSideSelectionScreen.Awake` and called the screen's own handlers
   (`method_17` / `method_18`: pick PMC, press Next). In SPT 4.1.6 those handlers are named `CG_Awake4` / `CG_Awake5`.
-- The port instead prefixes `MainMenuShowOperation.method_44` (the method that opens the side selection screen),
-  sets `RaidSettings.Side = Pmc` and jumps straight to `method_45` (the map selection step), the same thing the Next button does.
-  The screen is never built, so:
+- The port instead prefixes `MainMenuShowOperation.ShowScreen` for `EMenuType.Play` (what the Play button raises,
+  which normally calls `method_44` to open the side selection screen), sets `RaidSettings.Side = Pmc` and jumps straight
+  to `method_45` (the map selection step), the same thing the Next button does. The screen is never built, so:
   - it is skipped every time you press Play, not only on the first `Awake`;
   - **Back** on the map screen returns to the main menu instead of the side selection screen.
+- Only the Play button is intercepted: mods that open the side selection screen themselves (e.g. PitFireteam's
+  **My Squad**, which calls `method_44` directly) still get it.
 - Trimmed references, removed the `.vs` folder, and made the SPT install path configurable.
 
 ## Build
@@ -32,7 +34,7 @@ dotnet build -c Release -p:SPTPath="C:\SPT"
 
 If the repo sits in `<SPT>/Development/SPT.NoScavSelect`, `SPTPath` can be omitted.
 
-Note: `method_44` / `method_45` are obfuscated names. They will likely change with the next EFT/SPT version.
+Note: `method_45` is an obfuscated name. It will likely change with the next EFT/SPT version.
 
 ## License
 

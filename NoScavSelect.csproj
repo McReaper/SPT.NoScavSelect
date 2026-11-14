@@ -5,7 +5,7 @@
     <AssemblyName>NoScavSelect</AssemblyName>
     <RootNamespace>NoScavSelect</RootNamespace>
     <Nullable>disable</Nullable>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <LangVersion>latest</LangVersion>
     <Deterministic>true</Deterministic>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
